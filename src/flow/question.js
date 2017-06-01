@@ -9,3 +9,18 @@ class Question {
   }
 
 }
+
+class Answer {
+
+  constructor (value, title) {
+    this.value = value
+    this.title = title
+  }
+
+  static yesOrNo () {
+    return [
+      new Answer('YES', 'Ja'),
+      new Answer('NO', 'Nee')
+    ]
+  }
+}
