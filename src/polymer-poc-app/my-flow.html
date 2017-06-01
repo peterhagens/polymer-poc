@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<! -- import template repeater -->
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="question.html">
+<script src="../flow/question.js"></script>
 
 <dom-module id="my-flow">
     <template>
@@ -33,16 +33,6 @@
                     }
                 };
             }
-        }
-
-        class Question {
-
-            constructor (id, title, answers) {
-                this.id = id
-                this.title = title
-                this.answers = answers
-            }
-
         }
 
         window.customElements.define(MyFlow.is, MyFlow);
