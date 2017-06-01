@@ -10,7 +10,9 @@
     </style>
     <h2>Hello [[prop1]]!</h2>
     <my-question title="Wilt u de woning zakelijk of recreatief gebruiken?"></my-question>
-    <my-question title="Bent u al een prijs overeengekomen?"></my-question>
+    
+    <my-question title="Bent u al een prijs overeengekomen?" value="{{myValue}}"></my-question>
+    Antwoord: [[myValue]]
   </template>
 
   <script>
@@ -25,7 +27,13 @@
           prop1: {
             type: String,
             value: 'polymer-poc-appje'
-          }
+          }//,
+          // questions: {
+          //   type: Array,
+          //   value: [
+          //     { title: 'Houdt u van spelletjes?'}
+            // ]
+          //}
         };
       }
     }

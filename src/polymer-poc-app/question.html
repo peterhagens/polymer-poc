@@ -9,10 +9,10 @@
           }
         </style>
         <label id="label1">[[title]]</label>
-        <paper-radio-group aria-labelledby="label1">
-            <paper-radio-button name="a">Ja</paper-radio-button>
-            <paper-radio-button name="b">Nee</paper-radio-button>
-            <paper-radio-button name="d" disabled>Ik wil helemaal geen woning kopen</paper-radio-button>
+        <paper-radio-group aria-labelledby="label1" selected="{{value}}">
+            <paper-radio-button name="ja">Ja</paper-radio-button>
+            <paper-radio-button name="nee">Nee</paper-radio-button>
+            <paper-radio-button name="uit" disabled>Ik wil helemaal geen woning kopen</paper-radio-button>
         </paper-radio-group>
     </template>
 
@@ -28,8 +28,9 @@
                     title: {
                         type: String
                     },
-                    answer: {
-                        type: String
+                    value: {
+                        type: String,
+                        notify: true
                     }
                 };
             }
