@@ -2,11 +2,12 @@
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="question.html">
 <script src="../flow/question.js"></script>
+<script src="../flow/flow.js"></script>
 
 <dom-module id="my-flow">
     <template>
         <style>
-            :host {
+             :host {
                 display: block;
             }
         </style>
@@ -29,9 +30,14 @@
                 return {
                     items: {
                         type: Array,
-                        value: [new Question('hoi', 'hoi', 'hoi')]
+                        value: []
                     }
                 };
+            }
+
+            ready() {
+                super.ready();
+                this.items = [new Question('hoi', 'hoi', 'hoi')];
             }
         }
 
