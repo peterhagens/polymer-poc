@@ -1,5 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="question.html">
+<link rel="import" href="my-flow.html">
 
 <dom-module id="polymer-poc-app">
   <template>
@@ -9,10 +9,7 @@
       }
     </style>
     <h2>Hello [[prop1]]!</h2>
-    <my-question title="Wilt u de woning zakelijk of recreatief gebruiken?"></my-question>
-    
-    <my-question title="Bent u al een prijs overeengekomen?" value="{{myValue}}"></my-question>
-    Antwoord: [[myValue]]
+    <my-flow></my-flow>
   </template>
 
   <script>

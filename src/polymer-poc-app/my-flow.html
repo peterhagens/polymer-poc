@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<! -- import template repeater -->
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="question.html">
+
+<dom-module id="my-flow">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <template is="dom-repeat" items="{{items}}">
+            <my-question title="{{item.title}}"></my-question>
+        </template>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class MyFlow extends Polymer.Element {
+            static get is() {
+                return 'my-flow';
+            }
+
+            static get properties() {
+                return {
+                    items: {
+                        type: Array,
+                        value: [new Question('hoi', 'hoi', 'hoi')]
+                    }
+                };
+            }
+        }
+
+        class Question {
+
+            constructor (id, title, answers) {
+                this.id = id
+                this.title = title
+                this.answers = answers
+            }
+
+        }
+
+        window.customElements.define(MyFlow.is, MyFlow);
+    </script>
+</dom-module>
