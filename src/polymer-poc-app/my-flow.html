@@ -39,9 +39,13 @@
             ready() {
                 super.ready();
                 let flow = new Flow(pokemonFlowLogic);
+                flow.value(questions.likePokemon,'YES');
 
                 flow.run();
+                flow.run();
+                console.log(flow.state);
                 this.items = flow.items;
+                console.log(this.items)
 
                 //this.items = [new Question('hoi', 'hoi', 'hoi')];
             }

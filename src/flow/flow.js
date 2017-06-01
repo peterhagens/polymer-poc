@@ -9,7 +9,7 @@ class Flow {
   }
 
   run() {
-    this.items = []
+    this.items.length = 0
     return this.logic(this)
   }
 
@@ -26,7 +26,7 @@ class Flow {
     if (value === undefined) {
       return this.state[question.id]
     } else {
-      this.state[question.getId()] = value
+      this.state[question.id] = value
     }
   }
 
