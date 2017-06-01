@@ -20,9 +20,13 @@ class Flow {
       }
     })
   }
-
-  value (question) {
-    return this.state[question.getId()]
+  
+  value (question, value) {
+	  if (value === undefined) {
+		    return this.state[question.getId()]
+	  } else {
+		  this.state[question.getId()] = value;
+	  }
   }
 
   hasValue (question) {
