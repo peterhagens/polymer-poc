@@ -13,15 +13,12 @@
             }
         </style>
         <template is="dom-repeat" items="{{items}}">
-            <my-question title="{{item.title}}"></my-question>
+            <my-question title="{{item.title}}" accessor="{{accessorForQuestion(item)}}"></my-question>
         </template>
     </template>
 
     <script>
-        /**
-         * @customElement
-         * @polymer
-         */
+
         class MyFlow extends Polymer.Element {
             static get is() {
                 return 'my-flow';
@@ -32,27 +29,39 @@
                     items: {
                         type: Array,
                         value: []
-
                     }
                 };
             }
 
-            ready() {
-                super.ready();
-                let flow = new Flow(pokemonFlowLogic);
-                flow.value(questions.likePokemon, 'YES');
+            constructor() {
+                super();
+                this.flow = new Flow(pokemonFlowLogic);
+                this.items = this.flow.items;
 
-                flow.run();
-                console.log(flow.state);
-                this.items = flow.items;
-                this.items.push(new Question('hoi', 'hoi', 'hoi'));
-                console.log(this.items)
-                setTimeout(() => {
-                    this.push('items', new Question('hi', 'hi', 'hi'));
-                }, 200)
-
-                //this.items = [];
+                this.updateFlow()
             }
+
+            updateFlow () {
+              const update = () => {
+                this.notifyPath('items')
+                this.items = this.flow.items.slice()
+                console.log('updated flow', this.items)
+              }
+              this.flow.run().then(update, update)
+            }
+
+            accessorForQuestion(question) {
+              return (value) => {
+                console.log('accessor', value)
+                if (arguments.length === 1) {
+                  this.flow.value(question, value);
+                  this.updateFlow();
+                } else {
+                  return this.flow.value(question);
+                }
+              }
+            }
+
         }
 
         window.customElements.define(MyFlow.is, MyFlow);

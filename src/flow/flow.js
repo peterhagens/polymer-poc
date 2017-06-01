@@ -16,8 +16,11 @@ class Flow {
   ask(question) {
     return new Promise((resolve, reject) => {
       this.items.push(question)
+      console.log('Question ' + question.id + ' has answer ' + this.value(question))
       if (this.hasValue(question)) {
         resolve(this.value(question))
+      } else {
+        reject()
       }
     })
   }
