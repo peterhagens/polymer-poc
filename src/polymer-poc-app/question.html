@@ -4,9 +4,9 @@
 <dom-module id="my-question">
     <template>
         <style>
-          :host {
-            display: block;
-          }
+             :host {
+                display: block;
+            }
         </style>
         <label id="label1">[[title]]</label>
         <paper-radio-group aria-labelledby="label1" selected="{{value}}">
@@ -28,20 +28,21 @@
                     title: {
                         type: String
                     },
-                    value: {
-                        type: String,
-                        notify: true,
-                        observer: 'valueChanged'
-                    },
                     state: {
                         type: Object,
                         notify: true
+                    },
+                    value: {
+                        type: String,
+                        notify: true,
+                        observer: 'valueChanged',
                     }
                 };
             }
+
             valueChanged(value) {
                 this.state[this.id] = value;
-                console.log(this.state);
+                window.dispatchEvent(new CustomEvent('answer', { detail: { questionId: this.id, value: value } }));
             }
         }
 

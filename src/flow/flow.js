@@ -1,21 +1,18 @@
 'use strict'
 
-class Flow {
 
-  constructor(logic) {
-    this.logic = logic
+
+class Flow {
+  constructor() {
     this.items = []
     this.state = {}
   }
 
-  run() {
-    this.items.length = 0
-    return this.logic(this)
-  }
-
   ask(question) {
+    this.items.push(question)
+    window.dispatchEvent(new CustomEvent('ask', { detail: { items: this.items } }));
+
     return new Promise((resolve, reject) => {
-      this.items.push(question)
       if (this.hasValue(question)) {
         resolve(this.value(question))
       }
@@ -35,3 +32,5 @@ class Flow {
   }
 
 }
+
+
