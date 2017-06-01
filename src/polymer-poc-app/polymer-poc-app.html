@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="question.html">
 
 <dom-module id="polymer-poc-app">
   <template>
@@ -8,6 +9,8 @@
       }
     </style>
     <h2>Hello [[prop1]]!</h2>
+    <my-question title="Wilt u de woning zakelijk of recreatief gebruiken?"></my-question>
+    <my-question title="Bent u al een prijs overeengekomen?"></my-question>
   </template>
 
   <script>
@@ -21,7 +24,7 @@
         return {
           prop1: {
             type: String,
-            value: 'polymer-poc-app'
+            value: 'polymer-poc-appje'
           }
         };
       }
