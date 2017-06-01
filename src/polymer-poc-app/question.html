@@ -4,9 +4,9 @@
 <dom-module id="my-question">
     <template>
         <style>
-             :host {
-                display: block;
-            }
+          :host {
+            display: block;
+          }
         </style>
         <label id="label1">[[title]]</label>
         <paper-radio-group aria-labelledby="label1">
@@ -18,9 +18,9 @@
 
     <script>
         /**
-     * @customElement
-     * @polymer
-     */
+         * @customElement
+         * @polymer
+         */
         class MyQuestion extends Polymer.Element {
             static get is() { return 'my-question'; }
             static get properties() {
