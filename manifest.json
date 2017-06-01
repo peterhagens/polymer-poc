@@ -1,0 +1,6 @@
+{
+  "name": "polymer-poc",
+  "short_name": "polymer-poc",
+  "start_url": "/",
+  "display": "standalone"
+}
