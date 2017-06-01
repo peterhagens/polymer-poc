@@ -32,6 +32,7 @@
                     items: {
                         type: Array,
                         value: []
+
                     }
                 };
             }
@@ -39,15 +40,18 @@
             ready() {
                 super.ready();
                 let flow = new Flow(pokemonFlowLogic);
-                flow.value(questions.likePokemon,'YES');
+                flow.value(questions.likePokemon, 'YES');
 
-                flow.run();
                 flow.run();
                 console.log(flow.state);
                 this.items = flow.items;
+                this.items.push(new Question('hoi', 'hoi', 'hoi'));
                 console.log(this.items)
+                setTimeout(() => {
+                    this.push('items', new Question('hi', 'hi', 'hi'));
+                }, 200)
 
-                //this.items = [new Question('hoi', 'hoi', 'hoi')];
+                //this.items = [];
             }
         }
 
