@@ -13,8 +13,8 @@
             }
         </style>
         <template is="dom-repeat" items="{{items}}">
-            <my-question title="{{item.title}}"></my-question>
-        </template>
+            <my-question id="[[item.id]]" title="{{item.title}}" state="{{state}}"></my-question>
+     </template>
     </template>
 
     <script>
@@ -33,6 +33,12 @@
                         type: Array,
                         value: []
 
+                    },
+                    state: {
+                        type: Object,
+                        notify: true,
+                        value: {}
+
                     }
                 };
             }
@@ -40,16 +46,11 @@
             ready() {
                 super.ready();
                 let flow = new Flow(pokemonFlowLogic);
-                flow.value(questions.likePokemon, 'YES');
-
-                flow.run();
-                console.log(flow.state);
+                //flow.value(questions.likePokemon, 'YES');
                 this.items = flow.items;
-                this.items.push(new Question('hoi', 'hoi', 'hoi'));
-                console.log(this.items)
-                setTimeout(() => {
-                    this.push('items', new Question('hi', 'hi', 'hi'));
-                }, 200)
+                this.state = flow.state;
+                flow.run();
+                console.log(this.state);
 
                 //this.items = [];
             }

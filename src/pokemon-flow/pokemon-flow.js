@@ -6,6 +6,7 @@ const questions = {
 }
 
 function pokemonFlowLogic(flow) {
+  // console.log('in logic')
   return flow.ask(questions.likePokemon).then(likePokemon => {
     if (likePokemon === 'YES') {
       return flow.ask(questions.isPikachuFavorite)
