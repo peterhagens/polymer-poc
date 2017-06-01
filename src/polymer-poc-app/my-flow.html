@@ -3,6 +3,7 @@
 <link rel="import" href="question.html">
 <script src="../flow/question.js"></script>
 <script src="../flow/flow.js"></script>
+<script src="../pokemon-flow/pokemon-flow.js"></script>
 
 <dom-module id="my-flow">
     <template>
@@ -37,7 +38,12 @@
 
             ready() {
                 super.ready();
-                this.items = [new Question('hoi', 'hoi', 'hoi')];
+                let flow = new Flow(pokemonFlowLogic);
+
+                flow.run();
+                this.items = flow.items;
+
+                //this.items = [new Question('hoi', 'hoi', 'hoi')];
             }
         }
 

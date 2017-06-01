@@ -2,36 +2,36 @@
 
 class Flow {
 
-  constructor (logic) {
+  constructor(logic) {
     this.logic = logic
     this.items = []
     this.state = {}
   }
 
-  run () {
-	this.items = []
-    return logic(this)
+  run() {
+    this.items = []
+    return this.logic(this)
   }
 
-  ask (question) {
+  ask(question) {
     return new Promise((resolve, reject) => {
       this.items.push(question)
-      if (flow.hasValue(question)) {
-        resolve(flow.value(question))
+      if (this.hasValue(question)) {
+        resolve(this.value(question))
       }
     })
   }
-  
-  value (question, value) {
-	  if (value === undefined) {
-		    return this.state[question.getId()]
-	  } else {
-		  this.state[question.getId()] = value
-	  }
+
+  value(question, value) {
+    if (value === undefined) {
+      return this.state[question.id]
+    } else {
+      this.state[question.getId()] = value
+    }
   }
 
-  hasValue (question) {
-    return value(question) != null && value(question) != undefined
+  hasValue(question) {
+    return this.value(question) != null && this.value(question) != undefined
   }
 
 }
