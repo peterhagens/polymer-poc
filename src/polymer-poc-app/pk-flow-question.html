@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+
+<dom-module id="pk-flow-question">
+    <template>
+        <style>
+            :host {
+              display: block;
+            }
+        </style>
+        <slot></slot>
+    </template>
+
+    <script>
+
+        class FlowQuestionElement extends Polymer.Element {
+
+            static get is() {
+                return 'pk-flow-question';
+            }
+
+            static get properties() {
+                return {
+                    flow: Object,
+                    question: Object,
+                    value: {
+                      type: String,
+                      observer: '_onValueChanged'
+                    }
+                }
+            }
+
+            _onValueChanged () {
+              console.log('flow question onValueChanged')
+              this.flow.value(this.question, this.value)
+              this.dispatchEvent(new CustomEvent('teun', {bubbles: true, composed: true}));
+            }
+
+
+        }
+
+        window.customElements.define(FlowQuestionElement.is, FlowQuestionElement);
+    </script>
+</dom-module>

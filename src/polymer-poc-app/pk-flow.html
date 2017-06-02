@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="pk-flow-question.html">
+<link rel="import" href="pk-question-text.html">
+<script src="../flow/flow.js"></script>
+<script src="../flow/question.js"></script>
+<script src="../pokemon-flow/pokemon-flow.js"></script>
+
+<dom-module id="pk-flow">
+    <template>
+        <style>
+          :host {
+            display: block;
+          }
+        </style>
+        <dom-repeat items="{{items}}" as="question">
+          <template>
+            <pk-flow-question flow="{{flow}}" question="{{question}}" value="{{question.value}}" on-teun="updateFlow">
+              <pk-question-text title="{{question.title}}" value="{{question.value}}"></pk-question-text>
+            </pk-flow-question>
+          </template>
+        </dom-repeat>
+    </template>
+
+    <script>
+
+        class FlowElement extends Polymer.Element {
+
+            static get is() {
+                return 'pk-flow';
+            }
+
+            static get properties() {
+                return {
+                    items: {
+                        type: Array,
+                        value: []
+                    }
+                };
+            }
+
+            constructor() {
+                super()
+                this.flow = new Flow(pokemonFlowLogic)
+
+                this.updateFlow()
+            }
+
+            updateFlow () {
+              const update = () => {
+                this.items = this.flow.items
+              }
+              this.flow.run().then(update, update)
+            }
+
+        }
+
+        window.customElements.define(FlowElement.is, FlowElement);
+    </script>
+</dom-module>

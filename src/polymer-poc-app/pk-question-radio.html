@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
+
+<dom-module id="my-question">
+    <template>
+        <style>
+          :host {
+            display: block;
+          }
+        </style>
+        <label id="label1">[[title]]</label>
+        <paper-radio-group aria-labelledby="label1" selected="{{value}}">
+            <paper-radio-button name="YES">Ja</paper-radio-button>
+            <paper-radio-button name="NO">Nee</paper-radio-button>
+        </paper-radio-group>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class QuestionRadio extends Polymer.Element {
+
+            static get is() { return 'pk-question-radio'; }
+
+            static get properties() {
+                return {
+                    title: {
+                        type: String
+                    },
+                    value: {
+                        type: String,
+                        notify: true,
+                        observer: 'accessor'
+                    },
+                    accessor: Function
+                };
+            }
+
+        }
+
+        window.customElements.define(MyQuestion.is, MyQuestion);
+    </script>
+</dom-module>
